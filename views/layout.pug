@@ -1,0 +1,74 @@
+doctype html
+html(lang='en')
+    head
+
+
+        if one
+            title #{one.title}
+            meta(property='og:url', content='https://meteohub.pro/news/'+one._id)
+            meta(property='og:type', content='article')
+            meta(property='og:title', content=one.title)
+            meta(property='og:description', content=one.description)
+            meta(property='og:image', content='https://meteohub.pro/article/img/' + one.img)
+
+        else
+            title Новости о погоде, прогноз погоды - meteo.hub
+        meta(name='description', content='Новости погода, прогноз погоды')
+        meta(name='keywords', content='Погода, новости погода, погода в Украине, почасовый прогноз погоды, погода на завтра')
+        meta(name='news_keywords', content='погода прогноз, погода в Украине, е сегодня, Погода, новости погода, почасовый прогноз погоды, погода на завтра')
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        link(href='/bootstrap/css/front.css?5', rel='stylesheet')
+        link(href='/bootstrap/css/pogoda.css?5646', rel='stylesheet')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+
+
+    body
+        #wrapper
+            .head-line
+
+                .container
+                    header
+                        .logo
+                            a(href='/')
+                                img.logo(src='../../icon/mhub.png', alt='meteo')
+
+                        #menu
+                            center
+                                ul
+                                    li
+                                        a(href='/news') Новости
+                                    li
+                                        a(href='/prognoz/kiev') Прогнозы
+                                    li
+                                        a(href='/pogoda/kiev') Погода
+            .container
+                block content
+
+
+            footer
+                // Footer
+                .footer-bottom
+                    .container
+                        .row
+                            p.text-info Copyright &copy; 2018 || METEO HUB - новости о погоде, прогноз погоды || Контакты: meteohub.top@gmail.com
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-19467074-23')
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-19467074-23');
+
+    
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    #wrapper
+        script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+        // meteo_top
+        ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7920044952062150', data-ad-slot='8512321518', data-ad-format='auto', data-full-width-responsive='true')
+        script.
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        #content
+            if news
+                p.cat-iten-news Лента новостей
+                each item in news
+                    .item-news
+                        a(href='/news/' + item._id, target='_blank')
+                            .item-news-img
+                                img(src='/article/img/' + item.img, width='90', height='78', alt='Вы не поверите, но это ёжик')
+                            .text
+                                | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                                span.one-news-date #{formatter.format(item.pubDate)}
+
+        #aside
+            if top
+                p.cat-iten-news Главное
+                each item in top
+                    .item-news
+                        a(href='/news/' + item._id, target='_blank')
+                            .item-news-img
+                                img(src='/article/img/' + item.img, width='90', height='78', alt='Вы не поверите, но это ёжик')
+                            .text
+                                | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                                span.one-news-date #{formatter.format(item.pubDate)}
+
+            script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteo_right1
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7920044952062150', data-ad-slot='3959774932', data-ad-format='auto', data-full-width-responsive='true')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});

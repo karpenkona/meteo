@@ -1,0 +1,41 @@
+extends lay
+
+block content
+    .containerP
+        #pogoda1
+        #pogoda3
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    #main-feed
+        if news
+            p.cat-iten-news Лента новостей
+            each item in news
+                .main-item-news
+                    a(href='/go/news/' + item._id, target='_blank')
+                        .main-item-date #{formatter.format(item.pubDate)}
+                        .text-item-main
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+        .ads-block
+            script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteohub-poster
+            ins.adsbygoogle(style='display:inline-block;width:580px;height:400px', data-ad-client='ca-pub-7920044952062150', data-ad-slot='6264613885')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
+    #main-content
+        script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteo_right1
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7920044952062150', data-ad-slot='3959774932', data-ad-format='auto', data-full-width-responsive='true')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+        if top
+
+            each item in top
+                .item-news
+                    a(href='/news/' + item._id, target='_blank')
+                        .main-item-news-img
+                            img(src='/article/img/200-140/' + item.img, alt='Вы не поверите, но это ёжик')
+                        .main-item-top-text
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                            //span.one-news-date #{formatter.format(item.pubDate)}
+                        .top-item-desc !{item.description.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}

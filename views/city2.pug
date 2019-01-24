@@ -1,0 +1,81 @@
+extends layout
+
+block content
+
+
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    .containerP
+
+    #main-feed
+        if sweth
+            .oneblock
+                p.cat-iten-news Погода в городах Украины
+                each item in sweth
+                    a.citylist2.onelink(href='/pogoda/' + item.sity, target='_blank')
+                        | #{item.ru} - #{item.wether}&#8451;
+        if weth
+            - var p=JSON.parse(wapi);
+            - var lastDay;
+
+            - var hh = new Date(weth.wether.list[0].dt_txt);
+            - var itemDay=hh.getDay();
+
+            .cat-iten-news.h2.citylist Погода в
+                span.cat-iten-news  #{weth.wether.city.runame}
+                span  прогноз на 5 дней
+
+            - var i=0;
+            - lastDay=itemDay;
+            while i < 36
+                - hh = new Date(weth.wether.list[i].dt_txt);
+                .cityday #{p.dw[hh.getDay()]}
+                hr
+                //.main-item-date #{formatter.format(hh)}
+
+                - lastDay=itemDay=hh.getDay();
+                while (itemDay == lastDay & i < 36)
+
+                    -lastDay=itemDay
+                    .item-news
+
+                        .main-item-date #{formatter.format(hh)}
+                        img.cityimg1-2(src='/icon/w/' + weth.wether.list[i].weather[0].icon + '.svg', alt='погода в киеве')
+                        .citytext
+                            p.acu2temp #{weth.wether.list[i].main.temp} &#8451;
+                                span.citylist #{p.codes[weth.wether.list[i].weather[0].id]}
+
+                            .citylist | Влажность:
+                                span.acu2textBold  #{weth.wether.list[i].main.humidity}%
+                            .citylist | Давление:
+                                span.acu2textBold  #{Math.ceil(weth.wether.list[0].main.pressure)}мм
+                            .citylist2 | Ветер: #{weth.wether.list[0].wind.speed} м/с
+                            img.citywind1(src='/icon/w/wind.svg', style='transform: rotate(' + weth.wether.list[i].wind.deg + 'deg);')
+                    - i++
+                    - hh = new Date(weth.wether.list[i].dt_txt);
+                    - itemDay=hh.getDay();
+
+
+
+
+        if news
+            p.cat-iten-news Лента новостей
+            each item in news
+                .main-item-news
+                    a(href='/go/news/' + item._id, target='_blank')
+                        .main-item-date #{formatter.format(item.pubDate)}
+                        .text-item-main
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+    #main-content
+        if top
+
+            each item in top
+                .item-news
+                    a(href='/news/' + item._id, target='_blank')
+                        .main-item-news-img
+                            img(src='/article/img/' + item.img, alt='Вы не поверите, но это ёжик')
+                        .main-item-top-text
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                            span.one-news-date #{formatter.format(item.pubDate)}
+                        .one-news-date !{item.description.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+

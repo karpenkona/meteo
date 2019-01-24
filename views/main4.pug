@@ -1,0 +1,106 @@
+extends lay
+
+block content
+
+
+
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    .containerP
+        if weth
+            - var p=JSON.parse(wapi);
+            - var lastDay;
+
+            - var hh = new Date(weth.wether.list[0].dt_txt);
+            - var itemDay=hh.getDay();
+
+            #pogoda1
+                .acudiv
+                    .acu1figure
+                        img.acu1icon(src='/icon/w/' + weth.wether.list[0].weather[0].icon + '.svg', alt='Вы не поверите, но это ёжик')
+
+                    .acu1data
+                        ul
+                            li.acu1temp2
+                                | #{weth.wether.list[0].main.temp} &#8451;
+                            .li1
+                                li
+                                    | #{weth.wether.city.runame}
+                                li
+                                    | #{p.dw[hh.getDay()]} ( #{p.TimesofDay[hh.getHours()]} )
+
+                            li.li1
+                                | Влажность: #{weth.wether.list[0].main.humidity}%
+                            li.li1
+                                | Давление: #{Math.ceil(weth.wether.list[0].main.pressure)} мрст
+                            li.li1
+                                .acu1windspead
+                                    | Ветер: #{weth.wether.list[0].wind.speed} м/с
+                                    img.acu1wind(src='/icon/w/wind.svg', style='transform: rotate('+weth.wether.list[0].wind.deg+'deg);')
+                            li.li1
+                                | #{p.codes[weth.wether.list[0].weather[0].id]}
+            #pogoda3
+                - var i=1;
+                while i < 12
+                    - hh = new Date(weth.wether.list[i].dt_txt);
+                    - lastDay=itemDay=hh.getDay();
+                    .acu2item
+
+                        p.acu2text1 #{p.dw[hh.getDay()]} #{hh.getDate()}.#{hh.getMonth()}
+
+                            while (itemDay == lastDay & i < 12)
+
+                                -lastDay=itemDay
+
+                                .acu2day
+                                    p.acu2text2 #{p.TimesofDay[hh.getHours()]}
+                                    img.acu2icon(src='/icon/w/'+ weth.wether.list[i].weather[0].icon + '.svg', alt='погода в киеве')
+                                    p.acu2temp #{weth.wether.list[i].main.temp} &#8451;
+                                    p.acu2text4
+                                        | Вет:
+                                        span.acu2textBold  #{weth.wether.list[0].wind.speed}м/с
+                                        img.acu1wind(src='/icon/w/wind.svg', style='transform: rotate('+weth.wether.list[i].wind.deg+'deg);')
+                                        //el.style.transform = 'rotate('+item.wind.deg+'90deg)';
+                                    p.acu2text4
+                                        | Влажн:
+                                        span.acu2textBold  #{weth.wether.list[i].main.humidity}%
+                                    p.acu2text4
+                                        | Давл:
+                                        span.acu2textBold  #{Math.ceil(weth.wether.list[0].main.pressure)}мм
+                                - i++
+                                - hh = new Date(weth.wether.list[i].dt_txt);
+                                - itemDay=hh.getDay();
+    #main-feed
+        if news
+            p.cat-iten-news Лента новостей
+            each item in news
+                .main-item-news
+                    a(href='/go/news/' + item._id, target='_blank')
+                        .main-item-date #{formatter.format(item.pubDate)}
+                        .text-item-main
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+        .ads-block
+            script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteohub-poster
+            ins.adsbygoogle(style='display:inline-block;width:580px;height:400px', data-ad-client='ca-pub-7920044952062150', data-ad-slot='6264613885')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
+    #main-content
+        if sweth
+            p.cat-iten-news Погода в Украине
+            each item in sweth
+                a.allcity(href='/pogoda1/' + item.sity, target='_blank')
+                    .
+                        | #{item.ru}
+        if top
+
+            each item in top
+                .item-news
+                    a(href='/news/' + item._id, target='_blank')
+                        .main-item-news-img
+                            img(src='/article/img/' + item.img, alt='Вы не поверите, но это ёжик')
+                        .main-item-top-text
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                            span.one-news-date #{formatter.format(item.pubDate)}
+                        .one-news-date !{item.description.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}

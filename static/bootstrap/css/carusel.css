@@ -1,0 +1,424 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@media (min-width: 700px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+    bottom: 3rem;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 32rem;
+    background-color: #777;
+}
+.carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: normal;
+}
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
+/*own*/
+offerid {
+    margin: 10px 10px 10px 10px;
+
+}
+
+.wether-icon {
+    float:left;
+    height: 16;
+    width: 16;
+
+}
+img.site-icon {
+    float:left;
+    height: 16px;
+    width: 16px;
+    margin: 10px 10px 10px 10px;
+}
+.icon {
+    display: block;
+    float: left;
+    margin-right: 20px;
+
+    width: 110px;
+    padding-top: 5px;
+
+}
+.icon2 {
+    display: block;
+    float: left;
+    margin-right: 20px;
+
+    width: 20px;
+    padding-top: 3px;
+
+}
+.icon-one {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    margin-left: 5px;
+    width: 16px;
+    padding-top: 12px;
+
+
+
+}
+
+.my-cheks {
+    margin: 10px 10px 10px 10px;
+    padding-left: 21px;
+
+
+}
+@media (min-width: 700px){
+    .my-link{
+        white-space: nowrap;
+    }
+}
+@media (min-width: 400px){
+    .my-link{
+        /*white-space: nowrap;*/
+    }
+}
+.my-link{
+    align:center;
+
+    display: block;
+
+    text-decoration: none;
+    color: #666;
+    line-height: 2em;
+
+    border-bottom: none; /* Границу снизу не проводим */
+    /*white-space: nowrap; *//* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    padding: 5px; /* Поля */
+    text-overflow: ellipsis; /* Многоточие */
+}
+
+.my-link:hover{
+    text-decoration: none;
+    /*background: #f0f0f0; /* Цвет фона */
+    white-space: normal; /* Обычный перенос текста */
+}
+.one-link{
+    align:center;
+
+
+    display: block;
+
+    text-decoration: none;
+    color: #666;
+    line-height: 1.6em;
+
+    border-bottom: none; /* Границу снизу не проводим */
+
+
+    padding: 5px; /* Поля */
+
+}
+.one-link:hover{
+    text-decoration: none;
+    color: #006;
+    //background: #faa; /* Цвет фона */
+    white-space: normal; /* Обычный перенос текста */
+}
+.titles{
+
+    float:left
+}
+.my-site-name{
+    /*float:left;*/
+    font-size: 12px;
+    color: #797979;
+    opacity: 0.5;
+    padding-left: 1px;
+}
+.my-news-date{
+    /*float:left;*/
+    font-size: 12px;
+    color: #797979;
+    opacity: 0.8;
+    padding-left: 10px;
+}
+.one-news{
+
+    border-top: 1px solid #cacaca;
+    padding: 10px 10px;
+    margin: 1px;
+    color: #660;
+
+
+
+}
+.one-news-img {
+    display: block;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+
+.news-block{
+    background: #efefef;
+    width: 100%;
+    font-family: PT Sans,sans-serif;
+    font-size: 14px;
+    line-height: 1.57;
+    color: #252525;
+    display: block;
+}
+.news-item-article {
+    display: block;
+    width: 100%;
+
+
+
+    /*background: #f0f0f0*/;
+}
+.news-item-article:hover{
+
+    background: #f0f0f0; /* Цвет фона */}
+
+.ads-item-article {
+    display: block;
+    width: 100%;
+    padding: 0 0 0 20px;
+    border-bottom: 1px solid #f1f6fb;
+    background: #fff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+
+
+
+.link-title {
+    font-size: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 15px;
+    /*line-height: 2.57;*/
+}
+.picture-of-the-day {
+    text-transform: uppercase;
+    height: 35px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 18px;
+    margin-top: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #ef754d;
+    color: #fff;
+}
+.right-traffim{
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    overflow: auto;
+    position: absolute;
+    top: 0; left: auto; bottom: 0; right: 20px;
+    text-align: right;
+}
+.sticky {
+    position: fixed;
+    width:260px;
+    white-space: normal;
+    top:7rem;
+
+}
+.sticky2 {
+    position: fixed;
+
+    white-space: normal;
+    top:7rem;
+
+}
+@media screen and (max-width: 1600px) {
+    .sticky2 {
+        display: none;
+    }
+}
+@media screen and (max-width: 766px) {
+    .sticky {
+        display: none;
+    }
+}
+.top-news{
+    line-height: 2.5
+}
+
+.top-of-day {
+    margin-top: 20px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 19px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.top-of-day:before, .top-of-day:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 1px;
+    background-color: #2a96ef;
+    position: relative;
+}
+
+.top-of-day:before {
+    margin-left: -100%;
+    left: -14px;
+}
+.top-of-day:after {
+    margin-right: -100%;
+    right: -14px;
+}
+
+.one-desk {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    padding: 5px; /* Поля */
+    text-overflow: ellipsis; /* Многоточие */
+}
+.one-desk:hover {
+    background: #f0f0f0; /* Цвет фона */
+    white-space: normal; /* Обычный перенос текста */
+}
+
+footer {
+    flex: 0 0 auto;
+
+    padding: 1rem;/*это свойство можно удалить, добавлено для наглядности*/
+    background: #e6ffe6;/*это свойство можно удалить, добавлено для наглядности*/
+}
+.tizer {
+    list-style:none
+}
+.tizerli{
+    margin-bottom: 10px;
+}
+.pic {
+    padding-top: 5px;
+    float: left; /* Обтекание картинки текстом */
+    width: 90px;
+    height: 80px;
+}
+.text1 {
+    margin-left: 120px; /* Отступ от левого края */
+    /*margin-top: -10px; /* Отступ от левого края */
+}
+.text2 {
+    margin-left: 20px; /* Отступ от левого края */
+    color: #005cbf;
+    /*margin-top: -10px; /* Отступ от левого края */
+}
+.tizerlink {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    color: #332;
+}
+
+.tizerlink:hover{
+    text-decoration: none;
+    color: #333;
+    /*background: #f0f0f0; /* Цвет фона */
+    white-space: normal; /* Обычный перенос текста */
+}
+
+

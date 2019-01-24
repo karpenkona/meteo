@@ -1,0 +1,23 @@
+extends layout
+block content
+    if  err
+        p #{err}
+    H3 Добавление категории
+    form(method='post', action='/my/newcategory')
+        .form-group
+            .input-group.margin-bottom-sm
+                span.input-group-addon
+                    i.fa.fa-user-circle-o.fa-fw(aria-hidden='true')
+                input.form-control(name='name', placeholder='Название')
+        .form-group
+            .input-group.margin-bottom-sm
+                span.input-group-addon
+                    i.fa.fa-user-circle-o.fa-fw(aria-hidden='true')
+                input.form-control(name='description', placeholder='Описание')
+        if cat
+            .form-group
+                .input-group.margin-bottom-sm
+                    select.form-control(name='parent')
+                        each item in cat
+                            option(value=item._id) #{item.name}
+        button.btn-primary.btn(type='submit') Сохранить

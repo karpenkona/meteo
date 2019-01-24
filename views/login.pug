@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    #main-feed
+        if messege
+            p #{messege}
+        p Авторизация
+            form(name='login', action='/login', method='post')
+                input.form-control(type='text', placeholder='e-mail', name='email')
+                input.form-control(type='text', placeholder='Password', name='password')
+                button.btn-primary.btn(type='submit') Вход
+
+
+

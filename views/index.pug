@@ -1,0 +1,38 @@
+extends ./layout
+
+block content
+
+    .row
+        i.icon
+
+        p на время
+
+
+    .row
+        if prognoz
+            - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+            //p #{prognoz[0]}
+            - var w = JSON.parse(prognoz);
+
+            each item in w.list
+                - var hh = new Date(item.dt_txt);
+                #container.news-item-article
+                    object.wether-icon(type='image/svg+xml', data='/icon/cloudy.svg')
+                    p Прогноз
+                        //span.my-news-date #{hh.getHours()}
+                        span.my-news-date #{formatter.format(hh)}
+                        //span.my-news-date #{hh}
+                        span.my-news-date  #{item.main.temp} &#8451;
+
+
+    .row
+        .col-sm-12.col-md-8.col-lg-7.fixed
+            p ура
+            use(xlink:href='#primcirc')
+
+            p.top-of-day &kcy;&acy;&rcy;&tcy;&icy;&ncy;&acy; &dcy;&ncy;&yacy;
+
+
+
+
+

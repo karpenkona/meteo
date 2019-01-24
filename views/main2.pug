@@ -1,0 +1,275 @@
+extends layout
+
+block content
+    .containerP
+        #pogoda1
+        #pogoda3
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    #main-feed
+        if news
+            p.cat-iten-news Лента новостей
+            each item in news
+                .main-item-news
+                    a(href='/go/news/' + item._id, target='_blank')
+                        .main-item-date #{formatter.format(item.pubDate)}
+                        .text-item-main
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+        .ads-block
+            script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteohub-poster
+            ins.adsbygoogle(style='display:inline-block;width:580px;height:400px', data-ad-client='ca-pub-7920044952062150', data-ad-slot='6264613885')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
+    #main-content
+        script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+            // meteo_right1
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7920044952062150', data-ad-slot='3959774932', data-ad-format='auto', data-full-width-responsive='true')
+            script.
+                (adsbygoogle = window.adsbygoogle || []).push({});
+        if top
+
+            each item in top
+                .item-news
+                    a(href='/news/' + item._id, target='_blank')
+                        .main-item-news-img
+                            img(src='/article/img/' + item.img, alt='Вы не поверите, но это ёжик')
+                        .main-item-top-text
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                            span.one-news-date #{formatter.format(item.pubDate)}
+                        .one-news-date !{item.description.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+    script.
+
+        var codes = {
+            "200": "гроза с небольшим дождем",
+            "201": "гроза с дождем",
+            "202": "гроза с сильным дождем",
+            "210": "легкая гроза",
+            "211": "гроза",
+            "212": "сильная гроза",
+            "221": "местами грозы",
+            "230": "гроза, небольшой дождь",
+            "231": "гроза с дождем",
+            "232": "гроза с сильным дождем",
+            "300": "небольшой дождь",
+            "301": "мелкий дождь",
+            "302": "сильный дождь",
+            "310": "легкий дождь, морось",
+            "311": "дождь",
+            "312": "сильный дождь",
+            "313": "ливень, дожди",
+            "314": "сильный дождь, ливни",
+            "321": "кратковременные ливни, дождь",
+            "500": "легкий дождь",
+            "501": "умеренный дождь",
+            "502": "интенсивный дождь",
+            "503": "очень сильный дождь",
+            "504": "сильный дождь",
+            "511": "ледяной дождь",
+            "520": "ливни",
+            "521": "дождь, возможен ливень",
+            "522": "сильный дождь, ливень",
+            "531": "ливневый дождь",
+            "600": "легкий снег",
+            "601": "снег",
+            "602": "снегопад",
+            "611": "дождь со снегом",
+            "612": "периодически дождь со снегом",
+            "615": "легкий дождь и снег",
+            "616": "дождь и снег",
+            "620": "небольшой снежок",
+            "621": "снегопад",
+            "622": "сильный снегопад",
+            "701": "туман",
+            "711": "дымка",
+            "721": "мгла",
+            "731": "песок, пылевые завихрения",
+            "741": "густой туман",
+            "751": "Пещаные выхри",
+            "761": "Пыль",
+            "762": "вулканический пепел",
+            "771": "шквалы",
+            "781": "торнадо",
+            "800": "чистое небо",
+            "801": "небольшая облачность",
+            "802": "редкие облака",
+            "803": "облачно",
+            "804": "пасмурная погода"
+        }
+        var dw = {
+            "0": "воскресенье",
+            "1": "Понедельник",
+            "2": "Вторник",
+            "3": "Среда",
+            "4": "Четверг",
+            "5": "Пятница",
+            "6": "Субота"
+
+        };
+        var TimesofDay = {
+            '0': 'Ночь',
+            '6': 'Утро',
+            '12': 'День',
+            '18': 'Вечер'
+
+
+        }
+        console.log(codes[200]);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/pogoda/kiev', true);
+        xhr.responseType = 'text';
+        xhr.onload = function () {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    //console.log(xhr.response);
+                    //console.log(xhr.responseText);
+                    var p = JSON.parse(xhr.responseText);
+                    var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute: "2-digit"})
+                    //console.log(p.city.runame);
+                    var lastDay;
+                    p.list.forEach(function (item, i, arr) {
+
+                        var hh = new Date(item.dt_txt);
+                        var itemDay = hh.getDay();
+                        if (i == 0) {
+                            console.log('i: ' + i);
+                            create1(hh, item);
+                            lastDay = itemDay;
+                        }
+                        else {
+                            if (i == 1) {
+                                createacu2item(hh, item, i);
+                                createacu2day(hh, item);
+                                lastDay = itemDay;
+                            }
+                            else {
+                                if (itemDay != lastDay) {
+                                    console.log('in: ' + i);
+                                    createacu2item(hh, item, i);
+                                    createacu2day(hh, item);
+                                    lastDay = itemDay;
+                                }
+                                else {
+                                    console.log('ii: ' + i);
+                                    createacu2day(hh, item);
+                                    lastDay = itemDay;
+                                }
+
+                            }
+
+                        }
+
+
+                    });
+                    function createacu2day(hh, item) {
+                        var div = document.createElement('div');
+                        div.className = "acu2day";
+                        var p = document.createElement('p');
+                        p.className = 'acu2text2';
+                        p.innerHTML = TimesofDay[hh.getHours()];
+                        var allacu2item = document.getElementsByClassName("acu2item");
+                        var lastacu2item = allacu2item[allacu2item.length - 1];
+                        div.appendChild(p);
+                        var img = document.createElement('img');
+                        var pt = document.createElement('p');
+                        var pw = document.createElement('p');
+                        var ph = document.createElement('p');
+                        var pp = document.createElement('p');
+                        var el = document.createElement('img');
+                        el.className = "acu2wind";
+                        el.src = '/icon/w/wind.svg';
+                        el.style.transform = 'rotate(' + item.wind.deg + '90deg)';
+                        img.className = 'acu2icon';
+                        pt.className = 'acu2temp';
+                        pw.className = 'acu2text4';
+                        ph.className = 'acu2text4';
+                        pp.className = 'acu2text4';
+                        pw.innerHTML = 'Ветер: ' + item.wind.speed + 'м/с';
+                        pt.innerHTML = item.main.temp + ' &#8451';
+                        img.src = '/icon/w/' + item.weather[0].icon + '.svg';
+                        ph.innerHTML = 'Влажн: ' + item.main.humidity + '%';
+                        pp.innerHTML = 'Давл: ' + Math.ceil(item.main.pressure) + ' мрст';
+                        pw.appendChild(el);
+                        div.appendChild(img);
+                        div.appendChild(pt);
+                        div.appendChild(pw);
+                        div.appendChild(ph);
+                        div.appendChild(pp);
+                        lastacu2item.appendChild(div);
+
+                    }
+
+                    function createacu2item(hh, item, i) {
+                        var div = document.createElement('div');
+                        div.className = "acu2item";
+                        div.id = 'id' + i;
+                        var p = document.createElement('p');
+                        p.className = 'acu2text1';
+                        p.innerHTML = dw[hh.getDay()] + ' ' + hh.getDate() + '.' + hh.getMonth();
+                        div.appendChild(p);
+                        pogoda3.appendChild(div);
+                    }
+
+                    function create1(hh, item) {
+
+                        var div = document.createElement('div');
+                        var figure = document.createElement('figure');
+                        div.className = "acudiv";
+                        figure.className = "acu1figure";
+                        var img = document.createElement('img');
+                        img.className = "acu1icon";
+                        img.src = '/icon/w/' + item.weather[0].icon + '.svg';
+                        var figcaption = document.createElement('figcaption');
+                        figcaption.innerHTML = codes[item.weather[0].id]
+                        //div.innerHTML = p.cod;
+                        figure.appendChild(img);
+                        figure.appendChild(figcaption);
+
+                        div.appendChild(figure);
+                        var div2 = document.createElement('div');
+                        div2.className = "acu1data";
+                        var ul = document.createElement('ul');
+                        div2.appendChild(ul);
+                        var li0 = document.createElement('li');
+                        li0.className = "acu1temp2";
+                        li0.innerHTML = item.main.temp + ' &#8451';
+                        ul.appendChild(li0);
+                        div.appendChild(div2);
+                        var li1 = document.createElement('li');
+                        li1.innerHTML = p.city.runame;
+                        ul.appendChild(li1);
+                        var li2 = document.createElement('li');
+                        li2.innerHTML = dw[hh.getDay()] + ' ' + formatter.format(hh);
+                        ul.appendChild(li2);
+                        var li3 = document.createElement('li');
+                        li3.innerHTML = 'Влажность: ' + item.main.humidity + '%';
+                        ul.appendChild(li3);
+                        var li4 = document.createElement('li');
+                        li4.innerHTML = 'Давление: ' + Math.ceil(item.main.pressure) + ' мрст';
+                        ul.appendChild(li4);
+                        var li5 = document.createElement('li');
+
+                        //li4.innerHTML = 'Направление';
+                        var el = document.createElement('img');
+                        el.className = "acu1wind";
+                        el.src = '/icon/w/wind.svg';
+                        el.style.transform = 'rotate(' + item.wind.deg + '90deg)';
+                        var ws = document.createElement('div');
+                        ws.className = 'acu1windspead'
+                        ws.innerHTML = 'Ветер: ' + item.wind.speed + 'м/с';
+                        //ws.className="acu2text4";
+
+                        li5.appendChild(ws);
+                        li5.appendChild(el);
+                        ul.appendChild(li5);
+                        //container.appendChild(div);
+                        pogoda1.appendChild(div);
+                    }
+
+                }
+            }
+        };
+        xhr.send(null);
+

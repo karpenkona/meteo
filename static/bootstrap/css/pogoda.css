@@ -1,0 +1,261 @@
+#pogoda1{
+    /*overflow: hidden;*/
+}
+#pogoda{
+    /*overflow: hidden;*/
+}
+#pogoda2{
+    overflow: hidden;
+}
+#pogoda3{
+    overflow: hidden;
+}
+.acudiv{
+
+    /*display: inline-block;*/
+    float: left;
+    border-right:1px solid #fbce3c;
+    padding: 0 10px;  /* Расстояние между линией и текстом */
+}
+.acu1img{
+    width: 300px;
+    height: 300px;
+    float: left;
+}
+.figcaption {
+    text-align: center;
+    font-size: 0.7em;
+}
+
+
+.acu1figure {
+
+    float: left; /* Выравнивание по левому краю */
+    /*margin: 0 0 0.5em 0; /* Отступ справа и снизу */
+    width: 200px;
+    height: auto;
+}
+.acu1icon {
+    /*margin: 0 0 5px 5px;*/
+    float: left; /* Выравнивание по левому краю */
+    width: 200px;
+    height: auto;
+}
+.acu1wind{
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-left: 2px;
+
+}
+.acu1wind2{
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-left: 2px;
+
+}
+.cityhour {
+    font-size: 22px;
+}
+.cityimg1-1 {
+    /*margin: 0 0 5px 5px;*/
+    float: left; /* Выравнивание по левому краю */
+    width: 160px;
+    margin: 0 6px 0 0;
+    height: auto;
+}
+.cityimg1-2 {
+    /*margin: 0 0 5px 5px;*/
+    float: left; /* Выравнивание по левому краю */
+    width: 90px;
+    margin: 0 6px 0 0;
+    height: auto;
+}
+.citytext {
+    margin-left: 140px;
+}
+.citytemp1{
+    margin-bottom: 12px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600
+}
+.citywind1{
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+
+}
+.citylist{
+
+    font-size: 15px;
+    color: #797979;
+    opacity: 0.9;
+    padding-left: 10px;
+    margin-bottom: 6px;
+}
+.citylist2{
+    float:left;
+    font-size: 14px;
+    color: #797979;
+    opacity: 0.9;
+    padding-left: 10px;
+
+
+}
+.cityday{
+    /*float:left;*/
+    font-size: 16px;
+    color: #5b5b5b;
+    opacity: 0.9;
+
+    margin-bottom: 6px;
+}
+.acu1windspead{
+    float: left;
+}
+.li1{
+    margin: 1.3em;
+}
+
+.acu2item{
+
+    float: left;
+    margin-left: 0.1em;
+    border-right:1px solid #fbce3c;
+    padding: 0 2px;  /* Расстояние между линией и текстом */
+
+}
+.acu2text{
+    font-size: 0.7em;
+    opacity: 0.8
+
+}
+.acu2text1{
+    font-size: 0.7em;
+    opacity: 0.9
+
+}
+.acu2text2{
+    font-size: 0.6em;
+    opacity: 0.7
+
+}
+.acu2text4{
+    font-size: 0.5em;
+    opacity: 0.8;
+    text-indent: 0em
+
+}
+.acu2text5{
+    font-size: 0.6em;
+    opacity: 0.9;
+    text-indent: 0em
+}
+.acu2textBold{
+    font-weight: 600;
+}
+.acu2temp{
+    font-size: 0.8em;
+    font-weight: 600
+
+}
+.acu2wind {
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-right: 2px;
+}
+.acu2night{
+    float: left;
+    margin-left: 0.5em;
+}
+.acu2day{
+    float: left;
+    margin-left: 0.5em;
+}
+.acu2figure {
+
+    /*float: left; /* Выравнивание по левому краю */
+    margin: 0 0 0.5em 0; /* Отступ справа и снизу */
+    width: 50px;
+    height: auto;
+}
+.acu2icon {
+    /*margin: 0 0 5px 5px;*/
+    /*float: left; /* Выравнивание по левому краю */
+    width: 50px;
+    height: auto;
+}
+
+
+.acu1temp{
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    float: left;
+    line-height: 200px;
+    font-weight: 700
+}
+.acu1temp2{
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700
+}
+.acu1data{
+    float: right;
+    font-size: 0.6em;
+    text-align: left;
+}
+.allcity{
+    margin: 0.9em;
+    font-size: 1.1em;
+}
+@media (max-width: 1500px){
+    #pogoda3{
+        clear: both
+    }
+}
+@media (max-width: 800px){
+    #pogoda1{
+        overflow: hidden;
+    }
+    .acudiv{
+        border-right: none;
+        padding: 0 0px;
+        border-bottom: 1px solid #fbce3c;
+    }
+    .acu1figure {
+        width: 100px;
+    }
+    .acu1icon {
+        width: 100px;
+
+    }
+    .acu2item{
+        border-right: none;
+        border-bottom: 1px solid #fbce3c;
+        margin-left: 0em;
+        padding: 0 0px;
+        clear: both
+
+
+    }
+    .container{
+        width: 100%;
+        padding: 0 2px;
+    }
+    .containerP{
+        width: 100%;
+        padding: 0 2px;
+    }
+    .acu2day {
+
+        margin-left: 0.2em;
+    }
+    .acu2night {
+
+        margin-left: 0.2em;
+    }
+}

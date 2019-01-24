@@ -1,0 +1,95 @@
+extends lay
+
+block content
+
+
+    - var formatter = new Intl.DateTimeFormat(["ru"], {hour: "2-digit", minute:"2-digit" })
+    .containerP
+
+    #main-feed
+        if dweth
+            - var p=JSON.parse(wapi);
+            - var lastDay;
+            - var weth=JSON.parse(dweth);
+
+            - var hh = new Date(weth.list[0].dt_txt);
+            - var itemDay=hh.getDay();
+            h1.citylist прогноз погоды на неделю
+            .citylist #{uaname}
+
+            - var i=0;
+            - lastDay=itemDay;
+            - var count=weth.list.length-1;
+
+            while i < count
+                script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+                ins.adsbygoogle(style='display:block', data-ad-format='fluid', data-ad-layout-key='-h7+8-1l-2i+ar', data-ad-client='ca-pub-7920044952062150', data-ad-slot='7073307219')
+                script.
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+
+
+                - hh = new Date(weth.list[i].dt_txt);
+                .cityday #{p.dw[hh.getDay()]}
+                hr
+                //.main-item-date #{formatter.format(hh)}
+
+                - lastDay=itemDay=hh.getDay();
+                while (itemDay == lastDay & i < count)
+
+                    -lastDay=itemDay
+
+
+                    .item-news
+
+                        .main-item-date #{formatter.format(hh)}
+                        img.cityimg1-2(src='/icon/w/' + weth.list[i].weather[0].icon + '.svg', alt='погода в киеве')
+                        .citytext
+                            p.acu2temp #{weth.list[i].main.temp} &#8451;
+                                span.citylist #{p.codes[weth.list[i].weather[0].id]}
+
+                            .citylist | Влажность:
+                                span.acu2textBold  #{weth.list[i].main.humidity}%
+                            .citylist | Давление:
+                                span.acu2textBold  #{Math.ceil(weth.list[0].main.pressure)}мм
+                            .citylist2 | Ветер: #{weth.list[0].wind.speed} м/с
+                            img.citywind1(src='/icon/w/wind.svg', style='transform: rotate(' + weth.list[i].wind.deg + 'deg);')
+                    - i++
+
+                    - hh = new Date(weth.list[i].dt_txt);
+                    - itemDay=hh.getDay();
+
+
+
+        if sweth
+            p.cat-iten-news Погода в городах Украины
+            each item in sweth
+                a.citylist2.onelink(href='/pogoda/' + item.sity, target='_blank')
+                    | #{item.ru} - #{item.wether}&#8451;
+        if news
+            p.cat-iten-news Лента новостей
+            each item in news
+                .main-item-news
+                    a(href='/go/news/' + item._id, target='_blank')
+                        .main-item-date #{formatter.format(item.pubDate)}
+                        .text-item-main
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+    #main-content
+        script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+        // meteohub-poster
+        ins.adsbygoogle(style='display:inline-block;width:580px;height:400px', data-ad-client='ca-pub-7920044952062150', data-ad-slot='6264613885')
+        script.
+            (adsbygoogle = window.adsbygoogle || []).push({});
+
+        if top
+
+            each item in top
+                .item-news
+                    a(href='/news/' + item._id, target='_blank')
+                        .main-item-news-img
+                            img(src='/article/img/' + item.img, alt='Вы не поверите, но это ёжик')
+                        .main-item-top-text
+                            | #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+                            span.one-news-date #{formatter.format(item.pubDate)}
+                        .one-news-date !{item.description.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}
+
+

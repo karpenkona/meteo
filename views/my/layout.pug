@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+    head
+        title Администрирование - meteo.hub
+        meta(name='description', content='Новости Украины за сегодня: последние новости в Украине в реальном времени. Читайте реальные новости Украины. Лента новостей Украины за день')
+        meta(name='keywords', content='Новости Украины, новости Украина, новости в Украине, последние новости Украины, новости в Украине сегодня, лента новостей украины, украина последние новости, реальные новости Украины, новости украины в реальном времени')
+        meta(name='news_keywords', content='лента новостей украины, Новости Украины, новости Украина, новости в Украине, последние новости Украины, новости в Украине сегодня, украина последние новости, реальные новости Украины, новости украины в реальном времени')
+
+        // Required meta tags
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        // Bootstrap CSS
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ', crossorigin='anonymous')
+        //link(href='/bootstrap/css/grid.css', rel='stylesheet')
+        link(href='/bootstrap/css/carusel.css?5', rel='stylesheet')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+
+        //link(href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', rel='stylesheet')
+        //link(href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css', rel='stylesheet')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+        script(src='/bootstrap/js/moment.js')
+        script(src='/ckeditor/ckeditor.js')
+        script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js', integrity='sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n', crossorigin='anonymous')
+            script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js', integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb', crossorigin='anonymous')
+            script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
+
+
+
+
+
+
+
+
+    body
+        nav.navbar.navbar-toggleable-md.fixed-top
+            button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            a.navbar-brand(href='/')
+                img.img-responsive(src='../../icon/logo2.svg', height="36", alt='Blockchain')
+            #navbarsExampleDefault.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/my/addnews')
+                            | Добавить новость
+                            span.sr-only (current)
+                    li.nav-item
+                        a.nav-link(href='/my')
+                            | Мониторинг
+                            span.sr-only (current)
+
+                    li.nav-item
+                        a.nav-link(href='/my/newcategory')
+                            |  Добавить категорию
+                            span.sr-only (current)
+
+
+        .container
+
+            block content
+
+        footer
+            p.text-info Copyright &copy; 2018 || METEO || Для добавления ваших новостей и по другим вопросам сотрудничества: meteohub@gmail.com
+        // /Footer
+

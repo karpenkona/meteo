@@ -1,0 +1,184 @@
+/*------------------------------------*\
+	НАВИГАЦИЯ
+\*------------------------------------*/
+#nav{
+    margin-left: 0.5em;
+    float:left;
+    width:100%;
+    list-style:none;
+    font-weight:bold;
+    margin-bottom:1px;
+}
+#other {
+    /*overflow: scroll; /* Добавляем полосы прокрутки */
+    /*height: 850px;*/
+    /*z-index: 1;*/
+}
+.pm {
+    border: 1px solid white;
+}
+#kiev {
+    padding-right: 1em;
+}
+#nav p {
+    border: 1px solid white;
+    padding: 2px;
+    font-size: 0.55em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 550;
+    display: block;
+    line-height: 15px;
+    /*padding:2px;*/
+    color:#fff;
+
+}
+#nav li{
+    float:left;
+    margin-right:10px;
+    position:relative;
+    display:block;
+}
+#nav li a{
+    font-size: 0.55em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 550;
+    display: block;
+    line-height: 40px;
+    /*padding:2px;*/
+    color:#fff;
+    /*background: #1541d9;*/
+    text-decoration:none;
+
+    text-shadow:1px 1px 1px rgba(21, 65, 217, 0.75); /* Тень текста, чтобы приподнять его на немного */
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+}
+#nav li a:hover{
+    color: #f8fffd;
+    /*background: #1541d9;
+    background: rgba(21, 65, 217, 0.75); /* Выглядит полупрозрачным */
+    background: linear-gradient(to bottom, #2a96ef 60%, #2a96ef 80%, transparent 90%);
+    text-decoration:underline;
+}
+
+#kiev a{
+    padding: 2px;
+    padding-right: 1em;
+    font-size: 0.55em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 550;
+    display: block;
+    line-height: 15px;
+    /*padding:2px;*/
+    color:#fff;
+    float: left;
+    text-decoration: underline dotted;
+}
+#kiev a:hover{
+    padding: 2px;
+    font-size: 0.55em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: block;
+    line-height: 15px;
+    /*padding:2px;*/
+    color:#fff;
+}
+
+/*--- ВЫПАДАЮЩИЕ ПУНКТЫ ---*/
+#nav ul{
+    list-style:none;
+    position:absolute;
+    display: none;
+    visibility: collapse;
+    left:-9999px; /* Скрываем за экраном, когда не нужно (данный метод лучше, чем display:none;) */
+    opacity:0; /* Устанавливаем начальное состояние прозрачности */
+    -webkit-transition:0.25s linear opacity; /* В Webkit выпадающие пункты будут проявляться */
+    overflow: scroll; /* Добавляем полосы прокрутки */
+    width: 250px; /* Ширина блока */
+    height: 300px;
+    background: #FFFFFF;
+}
+#nav ul:hover {
+
+
+    display: inline;
+    visibility: visible;
+    position: relative;
+    opacity:1; /* Устанавливаем начальное состояние прозрачности */
+
+
+}
+#nav ul li{
+    padding-top:1px;
+    padding-left: 2px;/* Вводим отступ между li чтобы создать иллюзию разделенных пунктов меню */
+    float:none;
+    /*background:url(dot.gif);*/
+}
+#nav ul a{
+    padding-left: 5px;
+    line-height: 25px;
+    white-space:nowrap; /* Останавливаем перенос текста и создаем многострочный выпадающий пункт */
+    display:block;
+}
+#nav li:hover ul{
+    visibility: visible;
+    display: block;/* Выводим выпадающий пункт при наведении курсора */
+    left:0; /* Приносим его обратно на экран, когда нужно */
+    opacity:1; /* Делаем непрозрачным */
+}
+#nav li:hover a{ /* Устанавливаем стили для верхнего уровня, когда выводится выпадающий список */
+    /*background: #1541d9;
+    background: rgba(21, 65, 217, 0.75); /* Выглядит полупрозрачным */
+    background: linear-gradient(to bottom, #2a96ef 60%, #2a96ef 80%, transparent 90%);
+    text-decoration:underline;
+}
+#nav li:hover ul a{ /* Изменяем некоторые стили верхнего уровня при выводе выпадающего пункта */
+    text-decoration:none;
+    -webkit-transition:-webkit-transform 0.075s linear;
+}
+#nav li:hover ul li a:hover{ /* Устанавливаем стили для выпадающих пунктов, когда курсор наводится на конкретный пункт */
+    /*background: #1541d9;
+    background: rgba(21, 65, 217, 0.75); /* Будет полупрозрачным */
+    background: linear-gradient(to bottom, #2a96ef 60%, #2a96ef 80%, transparent 90%);
+    text-decoration:underline;
+    -moz-transform:scale(1.05);
+    -webkit-transform:scale(1.05);
+    padding-left: 2px;
+}
+.head-all{
+    padding-bottom: 0.3em;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    /*background-color: blue;*/
+    background: linear-gradient(to bottom, #2a96ef 60%, #2a96ef 80%, transparent 90%);
+    height: 4.2em;
+    /*background: linear-gradient(to bottom, #2a96ef 60%, #2a96ef 80%, transparent 90%);*/
+}
+
+@media (max-width: 800px){
+    #nav{
+        margin-left: 0.5em;
+
+        width:100%;
+        list-style:none;
+        font-weight:bold;
+        margin-bottom:1px;
+    }
+    #nav ul li{
+        padding-top:3px;
+        padding-left: 2px;/* Вводим отступ между li чтобы создать иллюзию разделенных пунктов меню */
+        float:none;
+        /*background:url(dot.gif);*/
+    }
+    #nav {
+        display: inline-block;
+    }
+}

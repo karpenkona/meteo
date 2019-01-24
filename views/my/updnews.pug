@@ -1,0 +1,84 @@
+extends layout
+
+block content
+    h2 Edit news
+        if (cat && one)
+
+            form(action='/my/updnews/' + one._id, method='post', enctype='multipart/form-data')
+
+                .form-group
+                    .input-group.margin-bottom-sm
+                        span.input-group-addon
+                            i.fa.fa-user-circle-o.fa-fw(aria-hidden='true')
+                        input.form-control(type='text', value=one.title, placeholder='Заголовок', name='title')
+
+
+                .form-group
+                    .input-group.margin-bottom-sm
+                        textarea.form-control(rows=3, placeholder='Описание', id="editor1", name='description')
+                            | #{one.description}
+
+                .form-group
+                    .input-group.margin-bottom-sm
+                        textarea.form-control(rows=10, placeholder='Текст', id="editor2", name='fulltext')
+                            | #{one.fulltext}
+
+
+                .form-group
+                    label.labelform(for='ads') Категория
+                    .input-group.margin-bottom
+                        select.form-control(name="category")
+                            option(value=one.category) #{one.category}
+                            each item in cat
+                                option(value=item.name) #{item.name}
+
+
+                .form-group
+                    label.labelform(for='ads') Опубликовано
+                    .input-group.margin-bottom-sm
+                        select.form-control(name="active")
+                            option(value=''+one.active) > #{''+one.active}
+                            option(value="false") не активна
+                            option(value="true") активна
+                .form-group
+                    label.labelform(for='ads') Важность новости
+                    .input-group.margin-bottom-sm
+                        select.form-control(name="top")
+                            option(value=''+one.top) > #{''+one.top}
+                            option(value="false") Обычная
+                            option(value="true") Важная
+
+                .form-group
+                    label.labelform(for='ads') Показывать GOOGLE ADS
+                    .input-group.margin-bottom-sm
+                        select.form-control(name="ads")
+                            option(value=''+one.ads) > #{''+one.ads}
+                            option(value="true") Показывать Adsence
+                            option(value="false") Не показывать Adsence
+
+                .form-group
+                    input(type="file", name="image")
+                img(src='../../article/img/' + one.img)
+
+                .form-group
+
+
+
+                button.btn-primary.btn(type='submit') Сохранить
+
+        script.
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1');
+            CKEDITOR.replace('editor2');
+
+
+
+
+
+
+
+
+
+    
+

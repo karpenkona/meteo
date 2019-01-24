@@ -1,0 +1,50 @@
+body {
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+    }
+
+h3 {
+    margin-top: 2rem;
+}
+
+.row {
+    margin-bottom: 1rem;
+}
+.row .row {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+[class*="col-"] {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.green-icon{
+    color: green;
+    font-style: normal;
+    size: 300px;
+}
+figure {
+    width: 27%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+    margin: 0 0 0 3.5%; /* Отступ слева */
+    background: #f0f0f0; /* Цвет фона */
+    border-radius: 5px; /* Радиус скругления */
+    padding: 2%; /* Поля */
+}
+offerid {
+    margin: 0 0 0 10px;
+
+}
+my-cheks {
+    margin: 10px 10px 10px 10px;
+    padding-left: 21px;
+
+
+}

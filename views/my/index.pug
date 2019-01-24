@@ -1,0 +1,59 @@
+extends layout
+
+block content
+    h2 новости
+    if news
+        -
+        ul
+            each item in news
+                li
+
+
+                    if (item.active == true)
+
+                        input.my-cheks(type='checkbox', id=item._id, name='my-checkbox' + item._id, checked='')
+                    else
+
+                        input.my-cheks(type='checkbox', id=item._id, name='my-checkbox' + item._id)
+
+
+
+
+
+
+
+                    a(href='/my/updnews/' + item._id, target='_blank') #{item.title.replace(/&quot;/g, "\x22").replace(/&#039;/g, "'")}+'-->'
+
+
+
+    script.
+
+
+
+        // Array of elements
+        var myBtns = document.querySelectorAll('.my-cheks')
+
+        // Add event listener to every single element
+        for (var i = 0; i < myBtns.length; i++) {
+
+            myBtns[i].addEventListener('change', doAction, false)
+        }
+        function doAction(e) {
+
+
+
+
+
+            var body = "id=" +e.target.id;
+            var xhr = new XMLHttpRequest();
+
+
+
+            xhr.open('POST', '/my/actives', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+            xhr.send(body);
+
+
+        }
