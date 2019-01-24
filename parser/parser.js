@@ -8,9 +8,9 @@ var mongoose = require('mongoose');
 var daoW = require('../dao/wether');
 
 let myJob = new CronJob('1 * * * *', function() {
-    console.log('running a task every 1 hourc '+ new Date());
+    //console.log('running'+ new Date());
     getlist();
-}, null, true, 'America/Los_Angeles');
+}, null, true);
 myJob.start();
 getlist();
 
