@@ -1,7 +1,7 @@
 const CronJob = require('cron').CronJob;
 const fs = require('fs');
 const request = require('request-promise');
-const APPID='67036f3b41a9199141b3e6f5e4c4985a';
+const APPID='xxxxxxxxxxxxxxx';
 const uri='http://api.openweathermap.org/data/2.5/forecast';
 const units = "metric";
 var mongoose = require('mongoose');

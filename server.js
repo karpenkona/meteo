@@ -36,7 +36,6 @@ http.createServer(function (req, res) {
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
 }).listen(80);
-//var app = express();
 var config = require('./config/config');
 var index=require('./rout/index');
 var wether=require('./rout/wether');
@@ -85,4 +84,3 @@ app.post('/login', (req, res)=>{
     });
 
 
-//app.listen(config.port);

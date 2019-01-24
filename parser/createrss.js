@@ -4,7 +4,7 @@ var daoNews = require('../dao/news');
 var CronJob = require('cron').CronJob;
 
 var myJob = new CronJob('*/10 * * * *', function() {
-    //console.log('running a task every 5 sec '+ new Date());
+    //console.log('running'+ new Date());
     makeRss();
 }, null, true, 'America/Los_Angeles');
 myJob.start();
